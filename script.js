@@ -9,6 +9,14 @@ get_location.addEventListener("click", (e) => {
         `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
       );
 
+      let { locality, city, principalSubdivision, countryName } = location.data;
+      let address = await JSON.stringify({
+        locality,
+        city,
+        principalSubdivision,
+        countryName,
+      });
+      document.querySelector("#address").innerHTML = address;
       console.log(location);
       // 24.819466, 85.028421
     },
